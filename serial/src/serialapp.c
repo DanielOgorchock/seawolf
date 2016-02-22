@@ -14,7 +14,8 @@ typedef enum{
     PT_IMU = 1,
     PT_AVR = 2,
     PT_DEPTH = 3,
-    PT_PERIPHERAL = 4
+    PT_PERIPHERAL = 4,
+    PT_PNEUMATICS = 5
 } PeripheralType;
 
 /* Cycle the DTR line on the given serial port */
@@ -65,6 +66,8 @@ static int getPeripheralType(SerialPort sp) {
                 return PT_DEPTH;
             } else if(strcmp(id, "Peripheral") == 0) {
                 return PT_PERIPHERAL;
+            } else if(strcmp(id, "Pneumatics") == 0) {
+		return PT_PNEUMATICS;  
             } else {
                 Logging_log(ERROR, Util_format("Received unknown ID '%s'", id));
             }
@@ -143,6 +146,7 @@ int main(void) {
         [PT_AVR] = "./bin/avr",
         [PT_DEPTH] = "./bin/depth",
         [PT_PERIPHERAL] = "./bin/peripheral",
+        [PT_PNEUMATICS] = "./bin/pneumatics"
     };
 
     /* Find serial ports */
