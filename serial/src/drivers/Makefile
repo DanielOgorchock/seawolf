@@ -1,5 +1,5 @@
 
-DRIVERS=imu.c imu_cont.c avr.c depth.c peripheral.c
+DRIVERS=imu.c imu_cont.c avr.c depth.c peripheral.c pneumatics.c
 OBJECTS=$(DRIVERS:%.c=%.o)
 BINS=$(DRIVERS:%.c=../../$(BIN_DIR)/%)
 

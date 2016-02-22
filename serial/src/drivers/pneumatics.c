@@ -1,6 +1,7 @@
 #include "seawolf.h"
 
 #include <stdio.h>
+#include <unistd.h>
 
 void run(SerialPort);
 
@@ -54,10 +55,11 @@ void run(SerialPort sp)
 
     while(1)
     {
-        //let's just iterate through all of the commands...
-        for(int i=0; i<8; ++i)
+        //let's just iterate through all of the commands for testing purposes...
+        for(int i=1; i<8; ++i)
         {
-
+            sleep(5);
+            Serial_sendByte(sp, i);
         }
     }    
 }
